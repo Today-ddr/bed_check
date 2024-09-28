@@ -113,6 +113,8 @@ class CQ(feapder.AirSpider):
             log.info(fr"查寝结果：{result}")
             bark_log = bark_log + fr"查寝结果：{result}\n"
             self.send_msg(result, "INFO")
+            requests.get(bark_log)
+
         except Exception as e:
             bark_log = bark_log + f"::error:: 查寝失败，结果未知：{e}\n"
             log.error(f"::error:: 查寝失败，结果未知：{e}")
@@ -230,7 +232,6 @@ if __name__ == '__main__':
     global bark_log
     if USERNAME and PASSWORD:
         CQ().start()
-
     else:
         if not USERNAME:
             bark_log = bark_log + "::error:: 账号不能为空\n"
@@ -243,5 +244,3 @@ if __name__ == '__main__':
             log.error("::error:: 密码不能为空")
             requests.get(bark_log)
             sys.exit(1)
-
-    requests.get(bark_log)
