@@ -227,6 +227,7 @@ def get_username_password():
 
 if __name__ == '__main__':
     USERNAME, PASSWORD = get_username_password()
+    global bark_log
     if USERNAME and PASSWORD:
         CQ().start()
 
@@ -234,9 +235,13 @@ if __name__ == '__main__':
         if not USERNAME:
             bark_log = bark_log + "::error:: 账号不能为空\n"
             log.error("::error:: 账号不能为空")
+            requests.get(bark_log)
+            sys.exit(1)
+
         if not PASSWORD:
             bark_log = bark_log + "::error:: 密码不能为空\n"
             log.error("::error:: 密码不能为空")
+            requests.get(bark_log)
+            sys.exit(1)
 
     requests.get(bark_log)
-    sys.exit(1)
