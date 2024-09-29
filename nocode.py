@@ -27,11 +27,6 @@ class CQ(feapder.AirSpider):
         bark_log = bark_log + f"用户名：{USERNAME}\n"
         log.info(f"用户名：{USERNAME}")
         self.send_msg("开始执行", level="INFO")
-        code_url = "https://ids.gzist.edu.cn/lyuapServer/kaptcha"
-        self.parse_tryLogin()
-
-    def parse_tryLogin(self):
-        global bark_log
         login_url = "https://ids.gzist.edu.cn/lyuapServer/v1/tickets"
         post_data = {
             "username": USERNAME,
@@ -198,7 +193,6 @@ if __name__ == '__main__':
     atexit.register(exit_handler)
     USERNAME, PASSWORD = get_username_password()
     global bark_log
-    bark_log = "https://api.day.app/coxRuU3LxJXzLiZNXCY23h/查寝通知/"
     if USERNAME and PASSWORD:
         CQ().start()
     else:
