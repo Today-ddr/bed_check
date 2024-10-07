@@ -1,0 +1,34 @@
+name: nocode2定时自动查寝
+
+on: 
+  schedule:
+      # 设置启动时间，为 UTC 时间, UTC14点 对应北京时间22点: '00 14 * * *'
+      # https://docs.github.com/zh/actions/using-workflows/events-that-trigger-workflows#schedule
+      - cron : '15 11 * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+    env:
+      TZ: Asia/Shanghai
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.11' 
+    - name: Install dependencies
+      # python -m pip install --upgrade pip
+      run: |        
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: Run
+      run: |
+        python nocode2.py -e
+      env:
+        LOGIN_USERNAME: ${{ secrets.LOGIN_USERNAME }}
+        LOGIN_PASSWORD: ${{ secrets.LOGIN_PASSWORD }}
+        BARK_URL: ${{secrets.BARK_URL}}
+        # 以下为可选参数，JSON格式一一对应所有参数
+        SETTING_STRING: ${{ secrets.SETTING_STRING }}
