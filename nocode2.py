@@ -149,8 +149,8 @@ def get_username_password_from_config(config_file, section):
     config = configparser.ConfigParser()
     config.read(config_file)
     if config.has_section(section):
-        username = config.get(section， 'LOGIN_USERNAME2')
-        password = config.get(section， 'LOGIN_PASSWORD2')
+        username = config.get(section, 'LOGIN_USERNAME_TWO')
+        password = config.get(section, 'LOGIN_PASSWORD2_TWO')
         return username, password
     else:
         return None, None
