@@ -25,7 +25,7 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Run
       run: |
-        python nocode2.py -e
+        python nocode.py -e
       env:
         LOGIN_USERNAME: ${{ secrets.LOGIN_USERNAME_TWO }}
         LOGIN_PASSWORD: ${{ secrets.LOGIN_PASSWORD_TWO }}
