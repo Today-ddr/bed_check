@@ -27,8 +27,8 @@ jobs:
       run: |
         python nocode2.py -e
       env:
-        LOGIN_USERNAME: ${{ secrets.LOGIN_USERNAME }}
-        LOGIN_PASSWORD: ${{ secrets.LOGIN_PASSWORD }}
+        LOGIN_USERNAME: ${{ secrets.LOGIN_USERNAME_TWO }}
+        LOGIN_PASSWORD: ${{ secrets.LOGIN_PASSWORD_TWO }}
         BARK_URL: ${{secrets.BARK_URL}}
         # 以下为可选参数，JSON格式一一对应所有参数
         SETTING_STRING: ${{ secrets.SETTING_STRING }}
