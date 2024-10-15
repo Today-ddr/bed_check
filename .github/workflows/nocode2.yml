@@ -4,7 +4,7 @@ on:
   schedule:
       # 设置启动时间，为 UTC 时间, UTC14点 对应北京时间22点: '00 14 * * *'
       # https://docs.github.com/zh/actions/using-workflows/events-that-trigger-workflows#schedule
-      - cron : '13 13 * * *'
+      - cron : '2 13 * * *'
   workflow_dispatch:
 permissions:
   contents: read
@@ -25,7 +25,7 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Run
       run: |
-        python nocode.py -e
+        python main.py -e
       env:
         LOGIN_USERNAME: ${{ secrets.LOGIN_USERNAME_TWO }}
         LOGIN_PASSWORD: ${{ secrets.LOGIN_PASSWORD_TWO }}
